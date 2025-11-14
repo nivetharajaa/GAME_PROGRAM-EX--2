@@ -1,4 +1,4 @@
-# Create a player movement using character, collectable, player health and score
+# EX:2 Create a player movement using character, collectable, player health and score
 ### Aim
 Create a playable third-person character in Unreal Engine that can move and run, collect coin-like collectibles, track a Score and Player Health, and display both on-screen (UI).
 
@@ -50,7 +50,8 @@ Score management:
 Function: AddScore(int Amount)
 
 Score = Score + Amount → update HUD.
-BP_Collectable → OnComponentBeginOverlap (Sphere)
+
+#### BP_Collectable → OnComponentBeginOverlap (Sphere)
 Other Actor → Cast To BP_PlayerCharacter
 
 Branch (if cast success)
@@ -60,18 +61,19 @@ If GiveHealth > 0 Call AddHealth(GiveHealth)
 Play Sound at Location
 Spawn Emitter at Location
 Destroy Actor
+
 BP_PlayerCharacter → AddScore (Custom Event)
+
 Input: Amount (int)
 Score = Score + Amount
 Call UpdateScoreDisplay on the HUD widget reference
 (Optional) Play pickup sound, animate, or show floating text
+
 BP_PlayerCharacter → ApplyDamage (Custom Event)
+
 Input: Damage (float)
-
 Health = Health - Damage
-
 If Health <= 0
-
 Call OnDeath (Disable Input; show Game Over)
 Update HUD: Call UpdateHealthDisplay
 
